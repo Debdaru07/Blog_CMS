@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { icon: "dashboard", label: "Dashboard", path: "/admin/dashboard" },
@@ -9,12 +8,10 @@ const navItems = [
 ];
 
 const Sidebar = ({ active, setActive }) => {
-  const navigate = useNavigate();
   const [toast, setToast] = useState("");
 
   const handleClick = (label, path) => {
     setActive?.(label);
-    navigate(path);
   };
 
   const handleLogout = () => {
@@ -27,7 +24,6 @@ const Sidebar = ({ active, setActive }) => {
 
     // Redirect after animation
     setTimeout(() => {
-      navigate("/login");
     }, 1500);
   };
 
