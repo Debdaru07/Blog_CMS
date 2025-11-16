@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PostsProvider } from './contexts/PostsContext';
 
-import Blog from './pages/consumer/Blog';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 
