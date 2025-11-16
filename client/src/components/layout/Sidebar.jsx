@@ -10,7 +10,6 @@ const navItems = [
 
 const Sidebar = ({ active, setActive }) => {
   const navigate = useNavigate();
-
   const [toast, setToast] = useState("");
 
   const handleClick = (label, path) => {
@@ -21,29 +20,40 @@ const Sidebar = ({ active, setActive }) => {
   const handleLogout = () => {
     setToast("Logging you out...");
 
-    // After small delay
+    // Switch to green check
     setTimeout(() => {
-      setToast("Logged out!");
+      setToast("Logged out");
     }, 1000);
 
-    // Redirect
+    // Redirect after animation
     setTimeout(() => {
       navigate("/login");
     }, 1500);
   };
 
+  const isSuccess = toast === "Logged out!";
+
   return (
     <>
       {/* Toast */}
       {toast && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 
-                        bg-black text-theme-beige px-5 py-2 rounded-lg 
-                        shadow-md flex items-center gap-3 z-50">
-
-          {/* Rotating settings icon */}
-          <span className="material-symbols-outlined animate-spin">
-            settings
-          </span>
+        <div
+          className="
+            fixed top-6 left-1/2 -translate-x-1/2
+            bg-black text-theme-beige px-5 py-2 rounded-lg shadow-md
+            flex items-center gap-3 z-50 animate-fadeIn
+          "
+        >
+          {/* Dynamic Icon */}
+          {!isSuccess ? (
+            <span className="material-symbols-outlined animate-spin">
+              settings
+            </span>
+          ) : (
+            <span className="material-symbols-outlined text-[#3cd37a]">
+              check_circle
+            </span>
+          )}
 
           {toast}
         </div>
@@ -56,7 +66,7 @@ const Sidebar = ({ active, setActive }) => {
         <div className="flex flex-col gap-8">
           <div className="flex items-center gap-3 px-3 py-2">
             <div
-              className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              className="bg-center bg-no-repeat bg-cover rounded-full size-10"
               style={{
                 backgroundImage:
                   "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAj4Itm8PcQLCxfuZfnrVAA74CqsU1QRruFtWp42lVl4T7EN9Bqh8oGBsAMiT1-ZOW8B5EmzwRYQEjnMuU4MCXxHu7DT0AzHmR7flQwyZvUEqOr_zhcCQmPJEciPGLuo6_A7htnaQp4V0KrBUTGrZQABnd4xPjl_lTHenI48SQk5CDDRA2tnNS4hGpR0QOPXqyOzzJwcBe7QeNsz2Hhe4naP6KKzbW2E3PCFNzF0_mMbEj-7f1BBNSPjVPkU9Vjy0MNUBlH4Yobiqo');",
