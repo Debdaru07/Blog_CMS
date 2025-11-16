@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (state.token) {
       // Optional: Validate token on mount
-      dispatch({ type: 'LOGIN', payload: { user: { email: 'loaded' } } });  // Placeholder
+      dispatch({ type: 'LOGIN', payload: { user: { email: 'loaded' } } });
     } else {
       dispatch({ type: 'LOGOUT' });
     }
-  }, []);
+  }, [state.token]);  // Added dependency to fix ESLint
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

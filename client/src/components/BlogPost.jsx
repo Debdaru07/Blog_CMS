@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { renderMarkdown } from '../utils/markdown';
+import { renderMarkdown } from '../utils/markdown';  // Keep for MD rendering
 
 const BlogPost = ({ post }) => (
   <article>

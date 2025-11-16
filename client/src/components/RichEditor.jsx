@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReactMarkdown from 'react-markdown';
-import { marked } from 'marked';
-import { renderMarkdown } from '../utils/markdown';
+import { marked } from 'marked';  // Keep for MD conversion
 
 const RichEditor = ({ value, onChange }) => {
   const [useMarkdown, setUseMarkdown] = useState(false);
 
   const handleContentChange = (newValue) => {
     onChange(useMarkdown ? newValue : newValue);
+  };
+
+  const handleMarkdownChange = (e) => {
+    onChange(e.target.value);
   };
 
   return (
@@ -28,13 +31,13 @@ const RichEditor = ({ value, onChange }) => {
         <>
           <textarea
             value={value}
-            onChange={(e) => handleContentChange(e.target.value)}
+            onChange={handleMarkdownChange}
             rows={10}
             style={{ width: '100%' }}
           />
           <div>
             <h4>Preview:</h4>
-            <ReactMarkdown>{value}</ReactMarkdown>
+            <ReactMarkdown>{marked(value)}</ReactMarkdown>
           </div>
         </>
       )}

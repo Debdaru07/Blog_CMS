@@ -3,23 +3,23 @@ import api from '../services/api';
 import { usePosts as usePostsContext } from '../contexts/PostsContext';
 
 export const usePosts = () => {
-  const context = usePostsContext();  // Pull state from context
+  const context = usePostsContext();
   const { dispatch } = context;
   const [error, setError] = useState('');
-  const [total, setTotal] = useState(0);  // Local for total (per-fetch)
+  const [total, setTotal] = useState(0);
 
   const fetchPosts = async (page = 1, limit = 5) => {
     dispatch({ type: 'FETCH_START' });
+    setError('');  // Clear previous error
     try {
       const res = await api.get(`/posts?page=${page}&limit=${limit}`);
       dispatch({ type: 'FETCH_SUCCESS', payload: res.data.posts });
-      setTotal(res.data.total);  // Set local total
-      return res.data;  // Return full { posts, total }
+      setTotal(res.data.total);
     } catch (err) {
-      const errMsg = err.response?.data?.error || 'Couldnt fetch';
+      const errMsg = err.response?.data?.error || 'Fetch failed (check backend)';
       dispatch({ type: 'FETCH_ERROR', payload: errMsg });
       setError(errMsg);
-      return null;
+      console.error('API Error:', err);  // Log for debug
     }
   };
 
@@ -66,22 +66,22 @@ export const usePosts = () => {
 
   const fetchAllPosts = async () => {
     dispatch({ type: 'FETCH_START' });
+    setError('');
     try {
       const res = await api.get('/posts/my');
       dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
-      return res.data;
     } catch (err) {
       const errMsg = err.response?.data?.error || 'Fetch all failed';
       dispatch({ type: 'FETCH_ERROR', payload: errMsg });
       setError(errMsg);
-      return null;
+      console.error('API Error:', err);
     }
   };
 
-  // Return context state + local total + methods
   return { 
-    ...context,  // posts, loading, error from context
+    ...context, 
     total, 
+    error,  // From local state
     fetchPosts, 
     createPost, 
     updatePost, 
