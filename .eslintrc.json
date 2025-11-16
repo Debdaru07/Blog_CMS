@@ -1,5 +1,10 @@
 {
     "env": { "node": true, "es2021": true },
-    "extends": ["airbnb-base"],
-    "rules": { "no-console": "off" }
+    "extends": ["airbnb-base", "react-app"],
+    "rules": { 
+        "no-console": "off",
+        "no-restricted-globals": ["error", "event"],
+        "no-unused-vars": "warn",
+        "react-hooks/exhaustive-deps": "warn" 
+    }
 }
