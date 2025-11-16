@@ -1,6 +1,8 @@
-body { margin: 0; font-family: Arial, sans-serif; }
-article { margin: 20px 0; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
-form { display: flex; flex-direction: column; max-width: 500px; }
-input, textarea, button { margin: 5px 0; padding: 8px; }
-button { background: #007bff; color: white; border: none; cursor: pointer; }
-button:disabled { background: #ccc; cursor: not-allowed; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}

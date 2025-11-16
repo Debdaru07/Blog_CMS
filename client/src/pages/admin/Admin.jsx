@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from '../components/common/Loader';
-import Button from '../components/common/Button';
-import RichEditor from '../components/RichEditor';
-import { usePosts } from '../hooks/usePosts';
-import { useAuth } from '../hooks/useAuth';
-import { useConfirm } from '../hooks/useConfirm';
+import Loader from '../../components/common/Loader';
+import Button from '../../components/common/Button';
+import RichEditor from '../../components/RichEditor';
+import { usePosts } from '../../hooks/usePosts';
+import { useAuth } from '../../hooks/useAuth';
+import { useConfirm } from '../../hooks/useConfirm';
 
 const Admin = () => {
   const [title, setTitle] = useState('');

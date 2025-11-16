@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PostsProvider } from './contexts/PostsContext';
-import Blog from './pages/Blog';
-import Admin from './pages/Admin';
-import Login from './pages/Login';
+import Blog from './pages/consumer/Blog';
+import Admin from './pages/admin/Admin';
+import Login from './pages/admin/Login';
 
 const ProtectedRoute = ({ children }) => {
   const { token, loading } = useAuth();

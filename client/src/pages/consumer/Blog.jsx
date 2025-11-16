@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';  // Ensure imported
-import Loader from '../components/common/Loader';
-import BlogPost from '../components/BlogPost';
-import { usePosts } from '../hooks/usePosts';
+import Loader from '../../components/common/Loader';
+import BlogPost from '../../components/BlogPost';
+import { usePosts } from '../../hooks/usePosts';
 
 const Blog = () => {
   const [page, setPage] = useState(1);
