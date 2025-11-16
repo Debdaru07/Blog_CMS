@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginForm = ({ onSubmit, email, setEmail, password, setPassword, error }) => {
+const LoginForm = ({ onSubmit, email, setEmail, password, setPassword, error, loading }) => {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-6 w-full">
 
@@ -47,14 +47,19 @@ const LoginForm = ({ onSubmit, email, setEmail, password, setPassword, error }) 
       {/* LOGIN BUTTON */}
       <button
         type="submit"
-        className="flex min-w-[84px] w-full cursor-pointer items-center justify-center
-                   rounded-lg h-12 px-5 bg-theme-black text-theme-beige
-                   text-base font-bold tracking-[0.015em]
-                   hover:opacity-90 transition-opacity
-                   focus:outline-none focus:ring-2 focus:ring-theme-black
-                   focus:ring-offset-2 focus:ring-offset-background-light"
+        disabled={loading}
+        className={`flex min-w-[84px] w-full items-center justify-center rounded-lg h-12 px-5 
+                    text-base font-bold tracking-[0.015em] transition-opacity
+
+                    ${loading
+                      ? "bg-theme-black/40 cursor-not-allowed text-theme-beige/60"
+                      : "bg-theme-black text-theme-beige cursor-pointer hover:opacity-90"
+                    }
+
+                    focus:outline-none focus:ring-2 focus:ring-theme-black
+                    focus:ring-offset-2 focus:ring-offset-background-light`}
       >
-        Login
+        {loading ? "Please wait..." : "Login"}
       </button>
 
     </form>
