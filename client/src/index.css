@@ -15,3 +15,22 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
 }
+
+@keyframes slideUpFull {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes slideDownFull {
+  from { transform: translateY(0); }
+  to   { transform: translateY(100%); }
+}
+
+.animate-slide-up-full {
+  animation: slideUpFull 0.35s ease-out forwards;
+}
+
+.animate-slide-down-full {
+  animation: slideDownFull 0.35s ease-out forwards;
+}
+
