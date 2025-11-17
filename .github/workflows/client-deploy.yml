@@ -9,15 +9,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           cd client
           npm install
 
-      - name: Build
+      - name: Build React App
         run: |
           cd client
           npm run build
