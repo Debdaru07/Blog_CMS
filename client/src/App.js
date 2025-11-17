@@ -18,18 +18,14 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const AppContent = () => (
-  <Router>
+  <Router basename="/Blog_CMS">   {/* 👈 IMPORTANT for GitHub Pages */}
     <Routes>
-
       {/* Public */}
-      {/* <Route path="/" element={<Blog />} /> */}
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
-
       {/* Admin root → redirect */}
-      <Route path="/admin" element={<ProtectedRoute> <AdminRedirect /> </ProtectedRoute>}/>
-      {/* Dashboard */}
-      <Route path="/admin/dashboard" element={<Dashboard />}/>
+      <Route path="/admin" element={ <ProtectedRoute> <AdminRedirect /> </ProtectedRoute> }/>
+      <Route path="/admin/dashboard" element={<Dashboard/>}/>
     </Routes>
   </Router>
 );
