@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
-  // Static placeholder posts
   const samplePosts = [
     {
       id: 1,
@@ -71,7 +70,6 @@ const Blog = () => {
       <main className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-10 md:py-20 flex justify-center">
         <div className="max-w-[1280px] w-full">
 
-          {/* HEADER */}
           <div className="p-4 mb-4">
             <h1 className="text-4xl md:text-5xl font-black tracking-tight">From the Blog</h1>
             <p className="text-text-secondary-light dark:text-text-secondary-dark max-w-lg mt-2">
@@ -79,13 +77,12 @@ const Blog = () => {
             </p>
           </div>
 
-          {/* BLOG GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
             {samplePosts.map((post) => (
               <Link
                 to={`/consumer/blog/${post.id}`}
                 key={post.id}
-                className="flex flex-col gap-4 bg-background-light dark:bg-neutral-900/50 rounded-lg shadow-soft hover:shadow-soft-hover transition-shadow cursor-pointer"
+                className="flex flex-col gap-4 bg-background-light dark:bg-neutral-900/50 rounded-lg shadow-soft hover:shadow-soft-hover transition-shadow cursor-pointer overflow-hidden"
               >
                 <div
                   className="w-full aspect-video bg-center bg-cover"
@@ -108,16 +105,44 @@ const Blog = () => {
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="px-5 py-12 bg-primary text-background-light">
-        <div className="flex flex-wrap justify-center gap-8 mb-6">
-          <Link className="text-sm hover:opacity-80" to="#">Privacy Policy</Link>
-          <Link className="text-sm hover:opacity-80" to="#">Terms of Service</Link>
-          <Link className="text-sm hover:opacity-80" to="#">Contact</Link>
+      {/* FULL PREMIUM FOOTER */}
+      <footer className="
+        flex flex-col gap-8 px-5 py-12 text-center 
+        bg-primary text-background-light
+        dark:bg-background-dark dark:border-t dark:border-neutral-800
+      ">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+          <Link className="text-sm font-normal min-w-40 hover:opacity-80 transition-opacity" to="/consumer">Privacy Policy</Link>
+          <Link className="text-sm font-normal min-w-40 hover:opacity-80 transition-opacity" to="/consumer">Terms of Service</Link>
+          <Link className="text-sm font-normal min-w-40 hover:opacity-80 transition-opacity" to="/consumer">Contact</Link>
         </div>
 
-        <p className="text-sm opacity-80">© 2024 BlackBeige CMS. All Rights Reserved.</p>
+        <div className="flex flex-wrap justify-center gap-6">
+          {/* Twitter */}
+          <Link className="hover:opacity-80 transition-opacity" to="/consumer">
+            <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8.29 20.251c7.547 0..." />
+            </svg>
+          </Link>
+
+          {/* LinkedIn */}
+          <Link className="hover:opacity-80 transition-opacity" to="/consumer">
+            <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path clipRule="evenodd" fillRule="evenodd" d="M16.338 16.338H13.67V12.16..." />
+            </svg>
+          </Link>
+
+          {/* GitHub */}
+          <Link className="hover:opacity-80 transition-opacity" to="/consumer">
+            <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path clipRule="evenodd" fillRule="evenodd" d="M12 2C6.477 2..." />
+            </svg>
+          </Link>
+        </div>
+
+        <p className="text-sm font-normal opacity-90">© 2024 BlackBeige CMS. All Rights Reserved.</p>
       </footer>
+
     </div>
   );
 };
