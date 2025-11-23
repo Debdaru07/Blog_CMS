@@ -6,9 +6,9 @@ import { PostsProvider } from './contexts/PostsContext';
 
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
-import Blog from './pages/consumer/Blog';  // 👈 consumer blog
+import Blog from './pages/consumer/Blog';
+import BlogDetails from './pages/consumer/BlogDetails';
 
-// Redirect for /admin → /admin/dashboard
 const AdminRedirect = () => <Navigate to="/admin/dashboard" replace />;
 
 // Protected Route wrapper
@@ -25,6 +25,7 @@ const AppContent = () => (
       {/* ---------------- PUBLIC CONSUMER ROUTES ---------------- */}
       <Route path="/consumer" element={<Navigate to="/consumer/blog" replace />} />
       <Route path="/consumer/blog" element={<Blog />} />
+      <Route path="/consumer/blog/:id" element={<BlogDetails />} />
 
       {/* ---------------- PUBLIC ADMIN LOGIN -------------------- */}
       <Route path="/" element={<Login />} />

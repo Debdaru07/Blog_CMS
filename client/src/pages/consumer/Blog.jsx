@@ -79,12 +79,13 @@ const Blog = () => {
             </p>
           </div>
 
-          {/* SAMPLE POSTS GRID */}
+          {/* BLOG GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
             {samplePosts.map((post) => (
-              <div
+              <Link
+                to={`/consumer/blog/${post.id}`}
                 key={post.id}
-                className="flex flex-col gap-4 bg-background-light dark:bg-neutral-900/50 rounded-lg shadow-soft hover:shadow-soft-hover transition-shadow"
+                className="flex flex-col gap-4 bg-background-light dark:bg-neutral-900/50 rounded-lg shadow-soft hover:shadow-soft-hover transition-shadow cursor-pointer"
               >
                 <div
                   className="w-full aspect-video bg-center bg-cover"
@@ -100,7 +101,7 @@ const Blog = () => {
                     {post.date} • {post.author}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
