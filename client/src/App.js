@@ -6,8 +6,9 @@ import { PostsProvider } from './contexts/PostsContext';
 
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
+import Blog from './pages/consumer/Blog';  // 👈 consumer blog
 
-// Redirect component for /admin → /admin/dashboard
+// Redirect for /admin → /admin/dashboard
 const AdminRedirect = () => <Navigate to="/admin/dashboard" replace />;
 
 // Protected Route wrapper
@@ -18,14 +19,36 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const AppContent = () => (
-  <Router basename="/Blog_CMS">   {/* 👈 IMPORTANT for GitHub Pages */}
+  <Router basename="/Blog_CMS">  {/* GitHub Pages base */}
     <Routes>
-      {/* Public */}
+
+      {/* ---------------- PUBLIC CONSUMER ROUTES ---------------- */}
+      <Route path="/consumer" element={<Navigate to="/consumer/blog" replace />} />
+      <Route path="/consumer/blog" element={<Blog />} />
+
+      {/* ---------------- PUBLIC ADMIN LOGIN -------------------- */}
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
-      {/* Admin root → redirect */}
-      <Route path="/admin" element={ <ProtectedRoute> <AdminRedirect /> </ProtectedRoute> }/>
-      <Route path="/admin/dashboard" element={<Dashboard/>}/>
+
+      {/* ---------------- PROTECTED ADMIN ROUTES ---------------- */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminRedirect />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   </Router>
 );
